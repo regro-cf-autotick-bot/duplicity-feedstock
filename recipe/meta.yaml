@@ -7,17 +7,18 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/duplicity-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/duplicity-{{ version }}.tar.gz
   sha256: 24b4d8af0d167d0498c3c9d7ce4151db08f6b3175a3e295eeccfe42915b1fe90
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py>=40 or py2k or win]
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
   host:
     - pip
     - python
